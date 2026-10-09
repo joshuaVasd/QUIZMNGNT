@@ -5,6 +5,7 @@ public class Main {
 
 // ---------- Data (in-memory, as stated in the proposal) ----------
     static class User {
+        String niggas;
         String id;
         String password;
         String role; // "Admin", "Instructor", "Student"
@@ -165,16 +166,12 @@ public class Main {
             System.out.print("Select task: ");
             String choice = sc.nextLine().trim();
 
-            if (choice.equals("5")) return;             // Logout -> M1
-            else if (choice.equals("1")) System.out.println("(Add user: not implemented yet)");
+            if(choice.equals("5")){
+                return;
+            }else if(choice.equals("1")){
+                System.out.println("moggas");
+            }
 
-            else if (choice.equals("2")) System.out.println("(Remove user: not implemented yet)");
-
-            else if (choice.equals("3")) System.out.println("(Approve quiz: not implemented yet)");
-
-            else if (choice.equals("4")) System.out.println("(View users: not implemented yet)");
-
-            else System.out.println("Invalid choice.");
         }
     }
 
