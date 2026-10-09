@@ -173,6 +173,8 @@ public class Main {
                 System.out.println("yo");
             }else if(choice.equals("3")){
                 System.out.println("igggas");
+            }else if(choice.equals("4")){
+                System.out.println();
             }
 
         }
