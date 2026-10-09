@@ -171,6 +171,8 @@ public class Main {
                 System.out.println("moggas");
             }else if(choice.equals("2")){
                 System.out.println("yo");
+            }else if(choice.equals("3")){
+                System.out.println("igggas");
             }
 
         }
