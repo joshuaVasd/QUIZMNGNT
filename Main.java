@@ -5,17 +5,31 @@ public class Main {
 
 // ---------- Data (in-memory, as stated in the proposal) ----------
     static class User {
-        String id;
+        int id;
         String password;
         String role; // "Admin", "Instructor", "Student"
 
-        User(String id, String password, String role) {
+        User(int id, String password, String role) {
             this.id = id;
             this.password = password;
             this.role = role;
         }
     }
 
+    static class Student extends User{
+        String course;
+        int Year;
+        String Block;
+
+        Student(int id, String password, String role, String course, int Year, String Block){
+            super(id,password,role);
+            this.course = course;
+            this.Year = Year;
+            this.Block = Block;
+        }
+    }
+
+   
     static ArrayList<User> users = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
@@ -24,9 +38,9 @@ public class Main {
 // ---------- Start ----------
     public static void main(String[] args) {
         //sample accounts
-        users.add(new User("admin", "admin123", "Admin"));
-        users.add(new User("1001", "instructor123", "Instructor"));
-        users.add(new User("1002", "student123", "Student"));
+        users.add(new User(1000, "admin123", "Admin"));
+        users.add(new User(1001, "instructor123", "Instructor"));
+        users.add(new User(1002, "student123", "Student"));
 
         mainMenu();
     }
@@ -66,7 +80,7 @@ public class Main {
         while (true) {                                  // loop = connector L
             System.out.println("\n--- LOGIN ---");
             System.out.print("Enter user ID: ");
-            String id = sc.nextLine().trim();
+            int id = sc.nextInt();
             System.out.print("Enter password: ");
             String password = sc.nextLine();
 
@@ -90,9 +104,9 @@ public class Main {
         }                                               // back to L (NOT back to attempts = 0)
     }
 
-    static User authenticate(String id, String password) {
+    static User authenticate(int id, String password) {
         for (User u : users) {
-            if (u.id.equals(id) && u.password.equals(password)) {
+            if (u.id == id && u.password.equals(password)) {
                 return u;
             }
         }
@@ -105,11 +119,11 @@ public class Main {
     static void changePassword() {
         while (true) {                                  // loop = connector Z
             System.out.print("\nEnter account user ID: ");
-            String id = sc.nextLine().trim();
+            int id = sc.nextInt();
 
             User found = null;                          // "User exists?"
             for (User u : users) {
-                if (u.id.equals(id)) {
+                if (u.id == id) {
                     found = u;
                     break;
                 }
@@ -168,13 +182,26 @@ public class Main {
             if(choice.equals("5")){
                 return;
             }else if(choice.equals("1")){
-                System.out.println("moggas");
+                System.out.println("1.Instructor");
+                System.out.println("2.Student");
+                System.out.print("Enter user role: ");
+                String userRole = sc.nextLine();
+                System.out.print("Enter user name: ");
+                String userName = sc.nextLine();
+                if(userRole.equals("1")){
+                    System.out.println("Enter course: ");
+                    String course = sc.nextLine();
+                }
             }else if(choice.equals("2")){
                 System.out.println("yo");
             }else if(choice.equals("3")){
                 System.out.println("igggas");
             }else if(choice.equals("4")){
                 System.out.println();
+            }else if(choice.equals("5")){
+                System.out.println("sir");
+            }else{
+                System.out.println("Invalid input");
             }
 
         }
