@@ -5,7 +5,6 @@ public class Main {
 
 // ---------- Data (in-memory, as stated in the proposal) ----------
     static class User {
-        String niggas;
         String id;
         String password;
         String role; // "Admin", "Instructor", "Student"
@@ -170,6 +169,8 @@ public class Main {
                 return;
             }else if(choice.equals("1")){
                 System.out.println("moggas");
+            }else if(choice.equals("2")){
+                System.out.println("yo");
             }
 
         }
