@@ -5,11 +5,11 @@ public class Main {
 
 // ---------- Data (in-memory, as stated in the proposal) ----------
     static class User {
-        int id;
+        String id;
         String password;
         String role; // "Admin", "Instructor", "Student"
 
-        User(int id, String password, String role) {
+        User(String id, String password, String role) {
             this.id = id;
             this.password = password;
             this.role = role;
@@ -21,7 +21,7 @@ public class Main {
         int Year;
         String Block;
 
-        Student(int id, String password, String role, String course, int Year, String Block){
+        Student(String id, String password, String role, String course, int Year, String Block){
             super(id,password,role);
             this.course = course;
             this.Year = Year;
@@ -38,9 +38,9 @@ public class Main {
 // ---------- Start ----------
     public static void main(String[] args) {
         //sample accounts
-        users.add(new User(1000, "admin123", "Admin"));
-        users.add(new User(1001, "instructor123", "Instructor"));
-        users.add(new User(1002, "student123", "Student"));
+        users.add(new User("1000", "admin123", "Admin"));
+        users.add(new User("1001", "instructor123", "Instructor"));
+        users.add(new User("1002", "student123", "Student"));
 
         mainMenu();
     }
@@ -80,7 +80,7 @@ public class Main {
         while (true) {                                  // loop = connector L
             System.out.println("\n--- LOGIN ---");
             System.out.print("Enter user ID: ");
-            int id = sc.nextInt();
+            String id = sc.nextLine();
             System.out.print("Enter password: ");
             String password = sc.nextLine();
 
@@ -104,9 +104,9 @@ public class Main {
         }                                               // back to L (NOT back to attempts = 0)
     }
 
-    static User authenticate(int id, String password) {
+    static User authenticate(String id, String password) {
         for (User u : users) {
-            if (u.id == id && u.password.equals(password)) {
+            if (u.id.equals(id) && u.password.equals(password)) {
                 return u;
             }
         }
@@ -123,7 +123,7 @@ public class Main {
 
             User found = null;                          // "User exists?"
             for (User u : users) {
-                if (u.id == id) {
+                if (u.id.equals(id)) {
                     found = u;
                     break;
                 }
